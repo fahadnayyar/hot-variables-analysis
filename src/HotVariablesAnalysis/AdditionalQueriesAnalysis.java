@@ -19,11 +19,11 @@ import java.util.*;
 
 public class AdditionalQueriesAnalysis extends BackwardFlowAnalysis {
     
-	FlowSet inVal, outVal;
-    Set<String> localsSet;
-    Map< Stmt, Pair < FlowSet , FlowSet > > finalFlowSets;
-    Set<String> inputSet;
-    Set<String> paramSet;
+	private FlowSet inVal, outVal;
+	private Set<String> localsSet;
+	private Map< Stmt, Pair < FlowSet , FlowSet > > finalFlowSets;
+	private Set<String> inputSet;
+	private Set<String> paramSet;
     
     public AdditionalQueriesAnalysis(UnitGraph g) {
         super(g);
@@ -121,7 +121,8 @@ public class AdditionalQueriesAnalysis extends BackwardFlowAnalysis {
         print("***----------main output of this method ends here------------***");
         print("");
     }
-    @Override
+    
+	@Override
     protected void flowThrough(Object in, Object unit, Object out) {
         inVal = (FlowSet) in;
         outVal = (FlowSet) out;
@@ -321,6 +322,7 @@ public class AdditionalQueriesAnalysis extends BackwardFlowAnalysis {
         outVal.add(outValMap);
     }
 
+//    TODO: remove unnecessary setters and getters. 
     @Override
     protected void copy(Object source, Object dest) {
         FlowSet srcSet = (FlowSet) source;
@@ -334,4 +336,42 @@ public class AdditionalQueriesAnalysis extends BackwardFlowAnalysis {
     protected void print1(Object s) {
         System.out.print(s.toString().toString());
     }
+    
+    public FlowSet getInVal() {
+		return inVal;
+	}
+	public void setInVal(FlowSet inVal) {
+		this.inVal = inVal;
+	}
+	public FlowSet getOutVal() {
+		return outVal;
+	}
+	public void setOutVal(FlowSet outVal) {
+		this.outVal = outVal;
+	}
+	public Set<String> getLocalsSet() {
+		return localsSet;
+	}
+	public void setLocalsSet(Set<String> localsSet) {
+		this.localsSet = localsSet;
+	}
+	public Map<Stmt, Pair<FlowSet, FlowSet>> getFinalFlowSets() {
+		return finalFlowSets;
+	}
+	public void setFinalFlowSets(Map<Stmt, Pair<FlowSet, FlowSet>> finalFlowSets) {
+		this.finalFlowSets = finalFlowSets;
+	}
+	public Set<String> getInputSet() {
+		return inputSet;
+	}
+	public void setInputSet(Set<String> inputSet) {
+		this.inputSet = inputSet;
+	}
+	public Set<String> getParamSet() {
+		return paramSet;
+	}
+	public void setParamSet(Set<String> paramSet) {
+		this.paramSet = paramSet;
+	}
+    
 }
